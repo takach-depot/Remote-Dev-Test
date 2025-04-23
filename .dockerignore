@@ -1,0 +1,15 @@
+# Dev Container や VSCode 設定は不要
+.devcontainer/
+.vscode/
+
+# Git 管理下の不要ゴミ
+.git
+.gitignore
+
+# テストコードやドキュメントも本番に不要なら
+tests/
+*.md
+
+# Python キャッシュ
+__pycache__/
+*.pyc
