@@ -1,0 +1,16 @@
+# Pythonキャッシュ
+__pycache__/
+*.pyc
+
+# 仮想環境
+.venv/
+.env
+
+# VSCode設定
+.vscode/
+
+# Dev Container関連
+.devcontainer/
+
+# OSゴミ
+.DS_Store
