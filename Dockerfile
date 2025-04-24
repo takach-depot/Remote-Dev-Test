@@ -12,7 +12,16 @@ WORKDIR /app
 
 # 1) 依存だけ先にコピーしてキャッシュ活用
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       build-essential gfortran libatlas-base-dev liblapack-dev \
+    && pip install --no-cache-dir \
+       --no-binary numpy,pandas,matplotlib,plotly,yfinance \
+       -r requirements.txt \
+    && apt-get purge -y \
+       build-essential gfortran libatlas-base-dev liblapack-dev \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
 # 2) アプリ本体をコピー（.dockerignore で .devcontainer/.git を除外）
 COPY . .
