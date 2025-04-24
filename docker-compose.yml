@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   streamlit-app:
+    platform: linux/amd64 # CPU命令セット統一のため追加
     build:
       context: .
       dockerfile: Dockerfile
